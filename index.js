@@ -4,7 +4,7 @@ const { forward } = require("./utils/fonts");
 const token = "1934972123:AAFJGemQb0MtyfA0x9RPWntaVGpkFs1C5u8";
 const convert = forward;
 // Create a bot that uses 'polling' to fetch new updates
-
+const externalUrl = process.env.CUSTOM_ENV_VARIABLE || 'https://my-app.herokuapp.com',
 var port = process.env.PORT || 8443;
 var host = process.env.HOST;
 var bot = new TelegramBot(token, { webHook: { port: port, host: host } });
@@ -47,6 +47,4 @@ bot.on("message", async (msg) => {
   }
 });
 
-bot.setWebHook("zero8d.xyz", {
-  certificate: "./crt.pem", // Path to your crt.pem
-});
+bot.setWebHook(externalUrl + ':443/bot' + token);
