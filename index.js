@@ -4,8 +4,10 @@ const { forward } = require("./utils/fonts");
 const token = "1934972123:AAFJGemQb0MtyfA0x9RPWntaVGpkFs1C5u8";
 const convert = forward;
 // Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, { polling: true });
 
+var port = process.env.PORT || 8443;
+var host = process.env.HOST;
+var bot = new TelegramBot(token, { webHook: { port: port, host: host } });
 // Matches "/echo [whatever]"
 bot.onText(/\/echo (.+)/, (msg, match) => {
   // 'msg' is the received Message from Telegram
