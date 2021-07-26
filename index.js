@@ -47,4 +47,4 @@ bot.on("message", async (msg) => {
   }
 });
 
-bot.setWebHook(externalUrl + ':443/bot' + token);
+bot.setWebHook(`${url}/bot${TOKEN}`);
