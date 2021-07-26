@@ -8,6 +8,8 @@ const externalUrl = 'https://beautynick.herokuapp.com',
 var port = process.env.PORT || 8443;
 var host = process.env.HOST;
 var bot = new TelegramBot(token, { webHook: { port: port, host: host } });
+const url = process.env.APP_URL || 'https://<app-name>.herokuapp.com:443';
+bot.setWebHook(`${url}${token}`);
 // Matches "/echo [whatever]"
 bot.onText(/\/echo (.+)/, (msg, match) => {
   // 'msg' is the received Message from Telegram
@@ -46,5 +48,3 @@ bot.on("message", async (msg) => {
     bot.sendMessage(chatId, "Menga ismingizni jo'nating");
   }
 });
-
-bot.setWebHook(`https://beautynick.herokuapp.com/bot${TOKEN}`);
