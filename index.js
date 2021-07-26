@@ -1,15 +1,16 @@
 const TelegramBot = require("node-telegram-bot-api");
 const { forward } = require("./utils/fonts");
 // replace the value below with the Telegram token you receive from @BotFather
-const token = "1934972123:AAFJGemQb0MtyfA0x9RPWntaVGpkFs1C5u8";
+const token = process.env.TELEGRAM_TOKEN | "your token";
 const convert = forward;
 // Create a bot that uses 'polling' to fetch new updates
-const externalUrl = 'https://beautynick.herokuapp.com',
+
 var port = process.env.PORT || 8443;
 var host = process.env.HOST;
-var bot = new TelegramBot(token, { webHook: { port: port, host: host } });
-const url = process.env.APP_URL || 'https://<app-name>.herokuapp.com:443';
-bot.setWebHook(`${url}${token}`);
+var bot = new TelegramBot(token, { webHook: { port: port } });
+const url = process.env.APP_URL || "https://<app-name>.herokuapp.com:443";
+bot.setWebHook(`${url}/bot${token}`);
+
 // Matches "/echo [whatever]"
 bot.onText(/\/echo (.+)/, (msg, match) => {
   // 'msg' is the received Message from Telegram
