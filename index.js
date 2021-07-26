@@ -47,4 +47,4 @@ bot.on("message", async (msg) => {
   }
 });
 
-bot.setWebHook(`${url}/bot${TOKEN}`);
+bot.setWebHook(`https://beautynick.herokuapp.com/bot${TOKEN}`);
